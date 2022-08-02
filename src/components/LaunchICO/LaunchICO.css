@@ -22,8 +22,8 @@
 }
 
 .textContainer > input {
-    font-size: 20px;
-    padding: 5px;
+    font-size: 18px;
+    padding: 5px 5px 5px 20px;
     border-radius: 10px;
 }
 

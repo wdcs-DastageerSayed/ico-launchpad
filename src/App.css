@@ -47,6 +47,12 @@
   padding-bottom: 20px;
 }
 
+.icoNot {
+  text-align: center;
+  text-justify: inherit;
+  color: #666;
+}
+
 .footer {
   background-color: #282c34;
   height: 8vh;
@@ -78,6 +84,5 @@
   align-items: center;
   height: 80px;
   width: 80px;
-  border: 1px solid red;
   z-index: 10;
 }

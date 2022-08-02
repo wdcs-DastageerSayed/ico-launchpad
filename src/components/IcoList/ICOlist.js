@@ -1,7 +1,8 @@
 import React from 'react'
+import Popup from 'reactjs-popup'
 import './ICOlist.css'
 
-const ICOlist = ({tokenName, tokenSymbol, tokenAddress, tokenSupply, isHeader }) => {
+const ICOlist = ({tokenName, tokenSymbol, tokenAddress, tokenSupply }) => {
   return (
     <div className="list">
         <img />
@@ -9,7 +10,9 @@ const ICOlist = ({tokenName, tokenSymbol, tokenAddress, tokenSupply, isHeader })
         <h4>{tokenName}</h4>
         <h4>{tokenAddress}</h4>
         <h4>{tokenSupply}</h4>
-        {isHeader ? (<div></div>) : ( <button>"View Details"</button>)}
+        <Popup trigger={<button>View Details</button>} modal>
+          <div>Details</div>
+        </Popup>
     </div>
   )
 }

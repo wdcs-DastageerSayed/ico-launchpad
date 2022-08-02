@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-
+import Web3 from 'web3';
 import './App.css';
 import CoinDetails from './components/CoinDetails/CoinDetails';
 import ICOlist from './components/IcoList/ICOlist';
+import ERC20_abi from "./erc20_abi.json";
 
 const List = [
   
@@ -11,6 +12,12 @@ const List = [
 function App() {
   const [connected, setConnected] = useState(false)
   const [account, setAccount] = useState("")
+
+  let web3 = new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/93cb9b09ad17492ebf579b891db201c9");
+
+  const deploy = async() => {
+    const dep = await new web3.eth.Contract(ERC20_abi).deploy({})
+  }
 
   const metamask = async() => {
     if (window.ethereum) {

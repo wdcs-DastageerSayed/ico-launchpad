@@ -52,7 +52,8 @@
   height: 8vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  padding-right: 20px;
   color: white;
 }
 
@@ -68,4 +69,15 @@
   border: 1px solid #333;
   color: #333;
   background-color: #fff;
+}
+
+.popup {
+  display: flex;
+  padding-block: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 80px;
+  border: 1px solid red;
+  z-index: 10;
 }

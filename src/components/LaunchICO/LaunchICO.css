@@ -1,0 +1,36 @@
+.modalContainer {
+    height: 100%;
+    width: 50vw;
+    /* z-index: 2; */
+    background-color: #888;
+    border-radius: 5px;
+    padding: 20px;
+
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    padding-block: 10px;
+    justify-content: space-between;
+}
+
+.textContainer > label {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.textContainer > input {
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.modalContainer > button {
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+}

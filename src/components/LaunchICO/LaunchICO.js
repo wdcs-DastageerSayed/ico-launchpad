@@ -19,7 +19,6 @@ const LaunchICO = () => {
       <div className="line"></div>
       <TextInput name="tokenName" label="Token Name" />
       <TextInput name="tokenSymbol" label="Token Symbol" />
-      <TextInput name="tokenAddress" label="Token Address" />
       <TextInput name="initialAmount" label="Initial Amount" />
       <button>Mint</button>
     </div>

@@ -34,3 +34,9 @@
     font-size: 20px;
     border-radius: 10px;
 }
+
+.modalContainer > .line {
+    height: 2px;
+    background-color: black;
+    margin: 20px 0;
+}

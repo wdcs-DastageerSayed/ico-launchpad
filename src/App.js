@@ -16,10 +16,11 @@ const List = []
 
 const fetch = async() => {
   const contract = new web3.eth.Contract(Launch_abi, "0x86F02E3AD9c061931dEAA7209327Fb3a969bdc00");
+  console.log(contract);
   const counter = await contract.methods.counter().call();
   for(let i=0; i <= counter; i++){
   const parr = await contract.methods.parr(i).call();
-  console.log(parr);
+  // console.log(parr);
   }
 }
 fetch();

@@ -11,10 +11,16 @@
 }
 
 .list > .img {
+    background-color: #333;
+    color: #fff;
     height: 40px;
     width: 40px;
     border: 1px solid black;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 24px bolder;
 }
 
 .list > h4 {

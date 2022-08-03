@@ -5,8 +5,8 @@ import './Launch.css'
 const Launch = () => {
   return (
     <div className="launch">
-        <TextInput label="Supply Amount"  placeholder="Amount To Supply" />
-        <TextInput label="Token Address"  placeholder="Token Address" />
+        <TextInput label="Supply Amount" value="amount" placeholder="Amount To Supply" />
+        <TextInput label="Token Address" value="address" placeholder="Token Address" />
         <input type="submit" placeholder="Submit" name="Submit" />   
     </div>
   )

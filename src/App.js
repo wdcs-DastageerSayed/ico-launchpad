@@ -8,8 +8,6 @@ import './App.css';
 import CoinDetails from './components/CoinDetails/CoinDetails';
 import ICOlist from './components/IcoList/ICOlist';
 import LaunchICO from './components/LaunchICO/LaunchICO';
-import ERC_abi from "./metadata/ERC.json";
-import ERC_bytecode from "./metadata/ERC_bytecode.json";
 
 const List = []
 
@@ -21,10 +19,11 @@ function App() {
   const [connectionStatus, setConnectionStatus] = useState()
 
   // const deploy = async() => {
+  //   console.log(account);
   //   const dep = await new web3.eth.Contract(ERC_abi).deploy({
   //     data: ERC_bytecode,
   //     arguments: [tokenName,tokenSymbol, tokenSupply]
-  //   }).send({from:account[0], gas:3000000});
+  //   }).send({from:account, gas:3000000});
   //   console.log(dep);
   //   alert(dep.address);
   // }

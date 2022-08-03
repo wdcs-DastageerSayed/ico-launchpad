@@ -11,8 +11,8 @@ const ICOlist = ({tokenName, tokenSymbol, tokenAddress, tokenSupply }) => {
         <h4>{tokenName}</h4>
         <h4>{tokenAddress}</h4>
         <h4>{tokenSupply}</h4>
-        <Popup trigger={<button>View Details</button>} modal>
-          <div><CoinDetails /></div>
+        <Popup trigger={<button className="detailsButton">View Details</button>} modal>
+          <div><CoinDetails tokenName={tokenName} tokenSymbol={tokenSymbol} tokenAddress={tokenAddress} tokenSupply={tokenSupply} tokenDescription="" /></div>
         </Popup>
     </div>
   )

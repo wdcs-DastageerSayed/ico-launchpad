@@ -8,8 +8,6 @@ import './App.css';
 import CoinDetails from './components/CoinDetails/CoinDetails';
 import ICOlist from './components/IcoList/ICOlist';
 import LaunchICO from './components/LaunchICO/LaunchICO';
-import ERC_abi from "./metadata/ERC.json";
-import ERC_bytecode from "./metadata/ERC_bytecode.json";
 
 const List = []
 

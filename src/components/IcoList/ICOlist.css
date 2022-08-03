@@ -13,3 +13,10 @@
     width: 20px;
     background-color: black;
 }
+
+.detailsButton {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    padding: 10px;
+}

@@ -1,5 +1,5 @@
-var USDC2 = artifacts.require("USDC2");
+var MintERC20 = artifacts.require("MintERC20");
 
 module.exports = function(deployer) {
-  deployer.deploy(USDC2,"1000000000000000000", "DevCoin", "DC") ;
+  deployer.deploy(MintERC20) ;
 };

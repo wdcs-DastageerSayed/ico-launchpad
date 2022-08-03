@@ -11,7 +11,6 @@ import LaunchICO from './components/LaunchICO/LaunchICO';
 import ERC_abi from "./metadata/ERC.json";
 import ERC_bytecode from "./metadata/ERC_bytecode.json";
 
-
 const List = []
 
 let web3 = new Web3.providers.HttpProvider("https://kovan.infura.io/v3/93cb9b09ad17492ebf579b891db201c9");
@@ -29,7 +28,6 @@ function App() {
   //   console.log(dep);
   //   alert(dep.address);
   // }
-
 
   const metamask = async() => {
     if (window.ethereum) {

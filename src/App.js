@@ -2,16 +2,27 @@ import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import Web3 from 'web3';
-
+import Launch_abi from "./metadata/Launch.json";
 import './App.css';
 
 import CoinDetails from './components/CoinDetails/CoinDetails';
 import ICOlist from './components/IcoList/ICOlist';
 import LaunchICO from './components/LaunchICO/LaunchICO';
 
+
+let web3 = new Web3(new Web3.providers.HttpProvider("https://kovan.infura.io/v3/93cb9b09ad17492ebf579b891db201c9"));
+
 const List = []
 
-let web3 = new Web3.providers.HttpProvider("https://kovan.infura.io/v3/93cb9b09ad17492ebf579b891db201c9");
+const fetch = async() => {
+  const contract = new web3.eth.Contract(Launch_abi, "0x86F02E3AD9c061931dEAA7209327Fb3a969bdc00");
+  const counter = await contract.methods.counter().call();
+  for(let i=0; i <= counter; i++){
+  const parr = await contract.methods.parr(i).call();
+  console.log(parr);
+  }
+}
+fetch();
 
 function App() {
   const [connected, setConnected] = useState(false)

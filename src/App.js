@@ -29,7 +29,6 @@ function App() {
   //   alert(dep.address);
   // }
 
-
   const metamask = async() => {
     if (window.ethereum) {
       if (!connected) {

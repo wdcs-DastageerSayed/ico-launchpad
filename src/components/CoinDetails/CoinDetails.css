@@ -1,11 +1,16 @@
 .coinDetailsContainer {
     height: 100%;
+    width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #223843;
     padding: 20px;
 }
+
+/* .coinDetails {
+    background-color: #FFF;  
+} */
 
 .coinDetails > h4 {
     padding-bottom: 10px;

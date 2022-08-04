@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import Launch from "../Launch/Launch";
 import Web3 from "web3";
+import EthereumTx from "@ethereumjs/tx";
 import ERC from "../../metadata/ERC.json";
 import "./LaunchICO.css";
 
@@ -14,11 +15,13 @@ export const TextInput = ({ label, placeholder, onChange }) => {
   );
 };
 
-let web3 = new Web3(
-  new Web3.providers.HttpProvider(
-    "https://kovan.infura.io/v3/93cb9b09ad17492ebf579b891db201c9"
-  )
-);
+const rpcURL = "http://127.0.0.1:7545"; 
+const web3 = new Web3(rpcURL);
+// let web3 = new Web3(
+//   new Web3.providers.HttpProvider(
+//     "https://kovan.infura.io/v3/93cb9b09ad17492ebf579b891db201c9"
+//   )
+// );
 
 
 const LaunchICO = () => {
@@ -53,7 +56,7 @@ const LaunchICO = () => {
         data: ERC.bytecode,
         arguments: [initalAmount, tokenName, tokenSymbol],
       })
-      .send({ from:account, gas: 3000000 });
+      .send({ from: account, gas: 3000000 }).
     console.log(dep);
     alert(dep.address);
   };

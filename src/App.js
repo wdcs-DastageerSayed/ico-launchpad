@@ -40,18 +40,17 @@ function App() {
   const fetch = async() => {
     const contract = new web3.eth.Contract(Launch_abi, "0x86F02E3AD9c061931dEAA7209327Fb3a969bdc00");
     const counter = await contract.methods.counter().call()
-    console.log(counter);
+    //console.log(counter);
     for(let i=0; i < counter; i++){
       const parr = await contract.methods.parr(i).call()
       List.push(parr);
-      console.log(parr)
+      //console.log(parr)
     }
     setList(list)
     setFetchList(true)
   }
 
- 
-
+  
   // const deploy = async() => {
   //   console.log(account);
   //   const dep = await new web3.eth.Contract(ERC_abi).deploy({

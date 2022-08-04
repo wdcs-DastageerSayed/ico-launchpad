@@ -33,24 +33,27 @@ function App() {
   const [account, setAccount] = useState("")
   const [connectionStatus, setConnectionStatus] = useState()
   const [fetchList, setFetchList] = useState(false)
-  const [list, setList] = useState([])
+  const [list, setList] = useState([{}])
 
 //  console.log(list);
   // fetch()
+
+
   const fetch = async() => {
     const contract = new web3.eth.Contract(Launch_abi, "0x86F02E3AD9c061931dEAA7209327Fb3a969bdc00");
     const counter = await contract.methods.counter().call()
-    //console.log(counter);
+    console.log(counter);
+
     for(let i=0; i < counter; i++){
       const parr = await contract.methods.parr(i).call()
       List.push(parr);
-      //console.log(parr)
     }
-    setList(list)
+    setList(List)
     setFetchList(true)
   }
 
-  
+ 
+
   // const deploy = async() => {
   //   console.log(account);
   //   const dep = await new web3.eth.Contract(ERC_abi).deploy({
@@ -95,10 +98,11 @@ function App() {
           {/* <ICOlist  tokenSymbol="ABC" tokenName="ABC" tokenAddress="0xe35e0d8be7d7e20fedde7a7e2ed2dc646291855b" tokenSupply="10000000"/> */}
       
           {!fetchList ? (<h4 className="icoNot">No ICO available</h4> ) :( 
-          // <div className="icoListData">
-          //   {List.map((key) => ())}
-          //   </div>
-          <ICOlist tokenSymbol={List[0].symbol} tokenName={List[0].name} tokenAddress={List[0].projectAdd} tokenSupply={List[0].noTokens} />
+            // List.map((key) => {<ICOlist tokenSymbol={key.symbol} tokenName={key.name} tokenAddress={key.projectAdd} tokenSupply={key.noTokens} tokenStartDate={key.startDate} tokenEndDate={key.endDate} tokenRate={key.rate} />
+            
+            //  console.log(key)})
+          // List.forEach((i) => {<ICOlist tokenSymbol={List[i].symbol} tokenName={List[i].name} tokenAddress={List[i].projectAdd} tokenSupply={List[i].noTokens} tokenStartDate={List[i].startDate} tokenEndDate={List[i].endDate} tokenRate={List[i].rate} />})
+           <ICOlist tokenSymbol={List[0].symbol} tokenName={List[0].name} tokenAddress={List[0].projectAdd} tokenSupply={List[0].noTokens} tokenStartDate={List[0].startDate} tokenEndDate={List[0].endDate} tokenRate={List[0].rate} />
             )}
         </div>
       </div>

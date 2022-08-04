@@ -7,13 +7,12 @@
 .appHeader {
   background-color: #282c34;
   height: 8vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   color: white;
 }
-
 
 .connectButton {
   border: 1px solid #fff;
@@ -68,7 +67,6 @@
 
 .icoListData {
   background-color: #111;
-  
 }
 
 .footer {
@@ -76,27 +74,29 @@
   height: 8vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding-right: 20px;
   color: white;
 }
 
 .launchButton {
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   padding-block: 10px;
   padding-inline: 20px;
   margin-right: 50px;
   cursor: pointer;
   background-color: #1deb5b;
   color: #111;
+  font-size: 16px;
 }
 
 .launchButton:hover {
-  border: 1px solid #333;
+  border: 2px solid #1deb5b;
   color: #333;
   background-color: #fff;
+  font-weight: 900;
 }
-
+/* 
 .popup {
   display: flex;
   padding-block: 10px;
@@ -105,4 +105,4 @@
   height: 80px;
   width: 80px;
   z-index: 10;
-}
+} */

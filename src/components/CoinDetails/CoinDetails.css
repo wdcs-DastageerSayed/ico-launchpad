@@ -1,17 +1,14 @@
-.coinDetailsContainer {
+.coinDetails {
     height: 100%;
     width: 50vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #223843;
+    background-color: #333;  
     padding: 20px;
     color: #fff;
 }
-
-/* .coinDetails {
-    background-color: #FFF;  
-} */
 
 .coinDetails > h4 {
     padding-bottom: 10px;
@@ -23,4 +20,21 @@
     width: 100%;
     font-size: 20px;
     border-radius: 10px;
+}
+
+.coinDetails > .close {
+    cursor: pointer;  
+    position: absolute;  
+    display: block;  
+    height: 30px;
+    width: 30px;
+    padding: 2px 5px;  
+    display: flex;
+    align-items: center;
+    right: -10px;  
+    top: -15px;  
+    font-size: 30px;  
+    background: #ffffff;  
+    border-radius: 18px;  
+    border: 1px solid #cfcece;
 }

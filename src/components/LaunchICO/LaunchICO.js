@@ -9,7 +9,7 @@ import "./LaunchICO.css";
 export const TextInput = ({ label, placeholder, onChange }) => {
   return (
     <div className="textContainer">
-      <label>{label}</label>
+      <label>{label} : </label>
       <input type="text" placeholder={placeholder} onChange={onChange} />
     </div>
   );
@@ -30,6 +30,8 @@ const LaunchICO = () => {
   const [tokenSymbol, setTokenSymbol] = useState("");
   const [initalAmount, setInitalAmount] = useState("");
   const [contractAddress, setContractAddress] =useState("")
+  const [open, setOpen] = useState(true);
+
 
   // let provider = ethers.getDefaultProvider('kovan');
   // let privateKey =  "d1277ddf595a6b84849582d89df944f3503ad5c2c8b06ec14ca6fad5401b7317"
@@ -47,11 +49,11 @@ const LaunchICO = () => {
       tokenName.toString(),
       tokenSymbol.toString()
     );  
-
+    setOpen(false)
     await contract.deployed();
     alert(contract.address);
     setContractAddress(contract.address)
-
+    
   };
 
   // const metamask = async () => {
@@ -84,9 +86,18 @@ const LaunchICO = () => {
   //     // onsole.log(dep);
   //   // alert(dep.address);
   // };
+  const closeModal = () => {
+    setOpen(false);
+  }
 
   return (
-    <div className="modalContainer">
+    <div>
+      {
+      open && (<div className="modalContainer">
+      <button className="close" onClick={closeModal}>          
+        &times;        
+      </button>
+      <h1>Launch ERC20 Token</h1>
       <div className="line"></div>
       <TextInput
         value={tokenName}
@@ -115,7 +126,10 @@ const LaunchICO = () => {
         label="Initial Amount"
         placeholder="Initial Amount"
       />
-      <button onClick={deploy}>Mint</button>
+      <button onClick={() => {deploy(); closeModal();}}>Mint</button>
+    </div>)
+    }
+    
     </div>
   );
 };

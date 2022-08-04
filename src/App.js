@@ -8,6 +8,7 @@ import './App.css';
 import CoinDetails from './components/CoinDetails/CoinDetails';
 import ICOlist from './components/IcoList/ICOlist';
 import LaunchICO from './components/LaunchICO/LaunchICO';
+import Launch from "./components/Launch/Launch";
 
 
 let web3 = new Web3(new Web3.providers.HttpProvider("https://kovan.infura.io/v3/93cb9b09ad17492ebf579b891db201c9"));
@@ -114,6 +115,9 @@ function App() {
         contentStyle={{ padding: '0px', border: 'none', borderBlockColor: "red" }}
         >
           <LaunchICO />
+      </Popup>
+      <Popup modal trigger={<button>Already have a token? </button>}>
+        <Launch />
       </Popup>
       </div>
 

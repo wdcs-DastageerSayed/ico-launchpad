@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import { TextInput } from "../LaunchICO/LaunchICO";
+import IERC from "../../metadata/IERC20.json";
+import ICO from "../../metadata/ICOLaunchpad.json";
 import "./Launch.css";
 
 const Launch = () => {
@@ -11,25 +13,30 @@ const Launch = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const Data = async ({ setError, setTxs, ether, addr }) => {
-    try {
-      if (!window.ethereum) throw new Error("Wallet not connected");
+  let listContract = "0x5C8EfC806b9AA0F3C0F0F135F1c2772690519357";
 
-      await window.ethereum.send("eth_requestAccounts");
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      console.log(signer);
-      //console.log({ ether, addr });
-    } catch (err) {
-      console.log(err.message);
-    }
-    console.log(
-      tokenAmount,
-      tokenAddress,
-      rate,
-      returnToken,
-      startDate,
-      endDate
+  const list = async () => {
+    if (!window.ethereum)
+      throw new Error("No crypto wallet found. Please install it.");
+    await window.ethereum.send("eth_requestAccounts");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    //Approval
+    let TContract = new ethers.Contract(tokenAddress, IERC.abi, provider);
+    let Tsigner = TContract.connect(signer);
+    await Tsigner.approve(listContract, tokenAmount.toString());
+
+    //List
+    let LContract = new ethers.Contract(listContract, ICO.abi, provider);
+    let LSigner = LContract.connect(signer);
+    await LSigner.listProject(
+      tokenAddress.toString(),
+      tokenAmount.toString(),
+      rate.toString(),
+      returnToken.toString(),
+      startDate.toString(),
+      endDate.toString()
     );
   };
 
@@ -83,7 +90,7 @@ const Launch = () => {
         value={endDate}
         placeholder="End Date in Epoch"
       />
-      <button onClick={Data}>Submit</button>
+      <button onClick={list}>Submit</button>
     </div>
   );
 };

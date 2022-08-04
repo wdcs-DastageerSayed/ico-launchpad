@@ -29,7 +29,6 @@ const LaunchICO = () => {
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
   const [initalAmount, setInitalAmount] = useState("");
-  const [contractAddress, setContractAddress] =useState("")
 
   // let provider = ethers.getDefaultProvider('kovan');
   // let privateKey =  "d1277ddf595a6b84849582d89df944f3503ad5c2c8b06ec14ca6fad5401b7317"
@@ -50,8 +49,6 @@ const LaunchICO = () => {
 
     await contract.deployed();
     alert(contract.address);
-    setContractAddress(contract.address)
-
   };
 
   // const metamask = async () => {

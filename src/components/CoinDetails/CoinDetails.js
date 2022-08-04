@@ -1,25 +1,68 @@
-import React from 'react'
-import { TextInput } from '../LaunchICO/LaunchICO'
-import './CoinDetails.css'
+import { ethers } from "ethers";
+import React, { useState } from "react";
+import { TextInput } from "../LaunchICO/LaunchICO";
+import ICO from "../../metadata/ICOLaunchpad.json"
+import "./CoinDetails.css";
 
-const CoinDetails = ({tokenName, tokenSymbol, tokenSupply,tokenAddress, tokenStartDate, tokenEndDate, tokenRate}) => {
+let listContract = "0x5C8EfC806b9AA0F3C0F0F135F1c2772690519357";
+
+const CoinDetails = ({
+  tokenName,
+  tokenSymbol,
+  tokenSupply,
+  tokenAddress,
+  tokenStartDate,
+  tokenEndDate,
+  tokenRate,
+}) => {
+  const [buyAmount, setBuyAmount] = useState("");
+
+  let Tamount = (parseInt(tokenRate) * buyAmount).toString();
+  // console.log(Tamount);
+  
+  const Transfer = async () => {
+    if (!window.ethereum)
+      throw new Error("No crypto wallet found. Please install it.");
+    await window.ethereum.send("eth_requestAccounts");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    let LContract = new ethers.Contract(listContract, ICO.abi, provider);
+    let LSigner = LContract.connect(signer);
+    console.log("LSigner", LSigner);
+    try {
+      const test = await LSigner.BuyToken(tokenAddress.toString(), buyAmount.toString()).deposit(
+        { value: ethers.utils.formatEther("1000") }
+      )
+      console.log("test", test); 
+    } catch(err) {
+      console.log("err", err); 
+    }
+  };
+
   return (
     <div className="coinDetailsContainer">
-        <div className="coinDetails">
-            <img />
-            <h4>Token Name: {tokenName}</h4>
-            <h4>Token Symbol: {tokenSymbol} </h4>
-            <h4>Token Total Supply: {tokenSupply}</h4>
-            {/* <h4>Token Description: {tokenDescription}</h4> */}
-            <h4>ICO Start Date: {tokenStartDate}</h4>
-            <h4>ICO End Date: {tokenEndDate}</h4>
-            <h4>Rate: {tokenRate}</h4>
-            <h4>Token Address: {tokenAddress}</h4>
-            <TextInput label="Amount to buy" placeholder="amount to buy" />
-            <button>Buy</button>
-        </div>
+      <div className="coinDetails">
+        <img />
+        <h4>Token Name: {tokenName}</h4>
+        <h4>Token Symbol: {tokenSymbol} </h4>
+        <h4>Token Total Supply: {tokenSupply}</h4>
+        {/* <h4>Token Description: {tokenDescription}</h4> */}
+        <h4>ICO Start Date: {tokenStartDate}</h4>
+        <h4>ICO End Date: {tokenEndDate}</h4>
+        <h4>Rate: {tokenRate}</h4>
+        <h4>Token Address: {tokenAddress}</h4>
+        <TextInput
+          onChange={(e) => {
+            setBuyAmount(e.target.value);
+          }}
+          value={buyAmount}
+          label="Amount to buy"
+          placeholder="amount to buy"
+        />
+        <button onClick={Transfer}>Buy</button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default CoinDetails
+export default CoinDetails;

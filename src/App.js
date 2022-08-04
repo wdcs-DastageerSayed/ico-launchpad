@@ -47,7 +47,6 @@ function App() {
     for(let i=0; i < counter; i++){
       const parr = await contract.methods.parr(i).call()
       List.push(parr);
-      console.log(parr)
     }
     setList(List)
     setFetchList(true)

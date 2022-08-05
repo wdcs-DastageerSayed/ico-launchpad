@@ -41,7 +41,7 @@ function App() {
 
 
   const fetch = async() => {
-    const contract = new web3.eth.Contract(ICO.abi, "0x5C8EfC806b9AA0F3C0F0F135F1c2772690519357");
+    const contract = new web3.eth.Contract(ICO.abi, "0x78b37E1637842F6A56071686f590b912d453300D");
     const counter = await contract.methods.counter().call()
     console.log(counter);
 

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: agpl-3.0
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -175,7 +175,7 @@ contract ICOLaunchpad is ReentrancyGuard{
         return(eth);
     }
 
-    function BuyToken(address _projectAdd,uint _amountTokens) public payable{
+    function BuyToken(address _projectAdd, uint _amountTokens) public payable{
         Project  storage p = projects[_projectAdd];
         require(block.timestamp > p.startDate);
         require(block.timestamp < p.endDate);

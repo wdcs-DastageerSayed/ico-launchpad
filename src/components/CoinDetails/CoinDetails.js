@@ -1,10 +1,10 @@
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import React, { useState } from "react";
 import { TextInput } from "../LaunchICO/LaunchICO";
-import ICO from "../../metadata/ICOLaunchpad.json"
+import ICO from "../../metadata/ICOLaunchpad.json";
 import "./CoinDetails.css";
 
-let listContract = "0x5C8EfC806b9AA0F3C0F0F135F1c2772690519357";
+let listContract = "0x78b37E1637842F6A56071686f590b912d453300D";
 
 const CoinDetails = ({
   tokenName,
@@ -17,9 +17,10 @@ const CoinDetails = ({
 }) => {
   const [buyAmount, setBuyAmount] = useState("");
 
-  let Tamount = (parseInt(tokenRate) * buyAmount).toString();
+  let amount = parseInt(tokenRate) * buyAmount;
+  let msgvalue = BigNumber.from(amount);
   // console.log(Tamount);
-  
+
   const Transfer = async () => {
     if (!window.ethereum)
       throw new Error("No crypto wallet found. Please install it.");
@@ -30,12 +31,14 @@ const CoinDetails = ({
     let LSigner = LContract.connect(signer);
     console.log("LSigner", LSigner);
     try {
-      const test = await LSigner.BuyToken(tokenAddress.toString(), buyAmount.toString()).deposit(
-        { value: ethers.utils.formatEther("1000") }
-      )
-      console.log("test", test); 
-    } catch(err) {
-      console.log("err", err); 
+      const test = await LSigner.BuyToken(
+        tokenAddress.toString(),
+        buyAmount.toString(),
+        { value: msgvalue }
+      );
+      console.log("test", test);
+    } catch (err) {
+      console.log("err", err);
     }
   };
 

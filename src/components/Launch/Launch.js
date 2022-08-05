@@ -13,9 +13,9 @@ const Launch = () => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  let listContract = "0x5C8EfC806b9AA0F3C0F0F135F1c2772690519357";
+  let listContract = "0x78b37E1637842F6A56071686f590b912d453300D";
 
-  const list = async () => {
+  const approve = async () => {
     if (!window.ethereum)
       throw new Error("No crypto wallet found. Please install it.");
     await window.ethereum.send("eth_requestAccounts");
@@ -25,12 +25,19 @@ const Launch = () => {
     //Approval
     let TContract = new ethers.Contract(tokenAddress, IERC.abi, provider);
     let Tsigner = TContract.connect(signer);
-    await Tsigner.approve(listContract, tokenAmount.toString());
+    Tsigner.approve(listContract, tokenAmount.toString());
+  };
 
-    //List
+  const list = async() => {
+    if (!window.ethereum)
+      throw new Error("No crypto wallet found. Please install it.");
+    await window.ethereum.send("eth_requestAccounts");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
     let LContract = new ethers.Contract(listContract, ICO.abi, provider);
     let LSigner = LContract.connect(signer);
-    await LSigner.listProject(
+    LSigner.listProject(
       tokenAddress.toString(),
       tokenAmount.toString(),
       rate.toString(),
@@ -38,7 +45,7 @@ const Launch = () => {
       startDate.toString(),
       endDate.toString()
     );
-  };
+  }
 
   return (
     <div className="launch">
@@ -90,7 +97,8 @@ const Launch = () => {
         value={endDate}
         placeholder="End Date in Epoch"
       />
-      <button onClick={list}>Submit</button>
+      <button onClick={approve}>Approve</button>
+      <button onClick={list}>List</button>
     </div>
   );
 };
